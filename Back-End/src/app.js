@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import errorHandler from "./middlewares/error.middleware.js";
+import productRoutes from "./routes/product.routes.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });

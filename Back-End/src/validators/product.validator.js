@@ -39,12 +39,10 @@ export const getProductsValidator = [
   query("page")
     .optional()
     .isInt({ min: 1 })
-    .withMessage("Page must be a positive whole number")
-    .toInt(),
+    .withMessage("Page must be a positive whole number"),
 
   query("limit")
     .optional()
     .isInt({ min: 1, max: 50 })
-    .withMessage("Limit must be a whole number between 1 and 50")
-    .toInt(),
+    .withMessage("Limit must be a whole number between 1 and 50"),
 ];
