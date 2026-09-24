@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -67,4 +68,56 @@ export const login = async (req, res) => {
     accessToken,
     user: formatUser(user),
   });
+};
+
+export const getMe = async (req, res) => {
+  res.status(200).json({ success: true, user: formatUser(req.user) });
+};
+
+export const refreshAccessToken = async (req, res) => {
+  const token = req.cookies.refreshToken;
+
+  if (!token) {
+    return res
+      .status(401)
+      .json({ success: false, message: "Refresh token missing" });
+  }
+
+  let decoded;
+  try {
+    decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+  } catch {
+    res.clearCookie("refreshToken", refreshCookieOptions);
+    return res
+      .status(401)
+      .json({ success: false, message: "Invalid or expired refresh token" });
+  }
+
+  const newRefreshToken = generateRefreshToken(decoded.id);
+  const user = await User.findOneAndUpdate(
+    { _id: decoded.id, refreshToken: hashToken(token) },
+    { refreshToken: hashToken(newRefreshToken) },
+  );
+
+  if (!user) {
+    await User.updateOne({ _id: decoded.id }, { $unset: { refreshToken: 1 } });
+    res.clearCookie("refreshToken", refreshCookieOptions);
+    return res.status(403).json({
+      success: false,
+      message: "Refresh token reused or revoked, please login again",
+    });
+  }
+
+  res.cookie("refreshToken", newRefreshToken, refreshCookieOptions);
+  res.status(200).json({
+    success: true,
+    accessToken: generateAccessToken(user._id),
+  });
+};
+
+export const logout = async (req, res) => {
+  await User.updateOne({ _id: req.user._id }, { $unset: { refreshToken: 1 } });
+
+  res.clearCookie("refreshToken", refreshCookieOptions);
+  res.status(200).json({ success: true, message: "Logged out successfully" });
 };
