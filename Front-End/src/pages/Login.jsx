@@ -41,9 +41,11 @@ const Login = () => {
   };
 
   return (
-    <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h1 className="mb-1 text-2xl font-semibold">Welcome back</h1>
-      <p className="mb-6 text-sm text-gray-500">Login to your account.</p>
+    <div className="mx-auto max-w-md rounded-2xl border border-ink/10 bg-white p-6 shadow-sm">
+      <h1 className="mb-1 font-display text-2xl font-semibold text-ink">
+        Welcome back
+      </h1>
+      <p className="mb-6 text-sm text-ink-muted">Login to your account.</p>
 
       {location.state?.registered && (
         <p className="mb-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
@@ -80,15 +82,15 @@ const Login = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+          className="w-full rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:brightness-110 disabled:opacity-60"
         >
           {isSubmitting ? "Logging in..." : "Login"}
         </button>
       </form>
 
-      <p className="mt-4 text-center text-sm text-gray-500">
+      <p className="mt-4 text-center text-sm text-ink-muted">
         New here?{" "}
-        <Link to="/register" className="font-medium text-indigo-600">
+        <Link to="/register" className="font-medium text-accent">
           Create an account
         </Link>
       </p>

@@ -46,9 +46,11 @@ const Register = () => {
   };
 
   return (
-    <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h1 className="mb-1 text-2xl font-semibold">Create account</h1>
-      <p className="mb-6 text-sm text-gray-500">
+    <div className="mx-auto max-w-md rounded-2xl border border-ink/10 bg-white p-6 shadow-sm">
+      <h1 className="mb-1 font-display text-2xl font-semibold text-ink">
+        Create account
+      </h1>
+      <p className="mb-6 text-sm text-ink-muted">
         Register to add and manage your products.
       </p>
 
@@ -98,15 +100,15 @@ const Register = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+          className="w-full rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:brightness-110 disabled:opacity-60"
         >
           {isSubmitting ? "Creating account..." : "Register"}
         </button>
       </form>
 
-      <p className="mt-4 text-center text-sm text-gray-500">
+      <p className="mt-4 text-center text-sm text-ink-muted">
         Already have an account?{" "}
-        <Link to="/login" className="font-medium text-indigo-600">
+        <Link to="/login" className="font-medium text-accent">
           Login
         </Link>
       </p>

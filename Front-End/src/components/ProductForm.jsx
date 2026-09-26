@@ -10,6 +10,14 @@ const ProductForm = ({
 }) => (
   <form onSubmit={onSubmit} noValidate className="space-y-4">
     <FormField
+      label="Name"
+      name="name"
+      value={form.name}
+      onChange={onChange}
+      error={fieldErrors.name}
+    />
+
+    <FormField
       label="Image URL"
       name="image"
       value={form.image}
@@ -29,7 +37,7 @@ const ProductForm = ({
     <div>
       <label
         htmlFor="description"
-        className="mb-1 block text-sm font-medium text-gray-700"
+        className="mb-1 block text-sm font-medium text-ink"
       >
         Description
       </label>
@@ -39,8 +47,8 @@ const ProductForm = ({
         rows={3}
         value={form.description}
         onChange={onChange}
-        className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500 ${
-          fieldErrors.description ? "border-red-500" : "border-gray-300"
+        className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent ${
+          fieldErrors.description ? "border-red-500" : "border-ink/20"
         }`}
       />
       {fieldErrors.description && (
@@ -68,7 +76,7 @@ const ProductForm = ({
     <button
       type="submit"
       disabled={isSubmitting}
-      className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+      className="w-full rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:brightness-110 disabled:opacity-60"
     >
       {isSubmitting ? "Saving..." : submitLabel}
     </button>
