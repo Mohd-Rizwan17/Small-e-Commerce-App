@@ -4,10 +4,11 @@ const isOwner = (product, user) =>
   product.createdBy.toString() === user._id.toString();
 
 export const createProduct = async (req, res) => {
-  const { name, description, price, stock } = req.body;
+  const { name, image, description, price, stock } = req.body;
 
   const product = await Product.create({
     name,
+    image,
     description,
     price,
     stock,
@@ -72,9 +73,10 @@ export const updateProduct = async (req, res) => {
     });
   }
 
-  const { name, description, price, stock } = req.body;
+  const { name, image, description, price, stock } = req.body;
 
   product.name = name;
+  product.image = image;
   product.description = description ?? "";
   product.price = price;
   product.stock = stock;

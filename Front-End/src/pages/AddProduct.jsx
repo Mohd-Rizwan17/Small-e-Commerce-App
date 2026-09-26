@@ -7,6 +7,7 @@ import { parseApiErrors } from "../utils/formErrors";
 const AddProduct = () => {
   const [form, setForm] = useState({
     name: "",
+    image: "",
     description: "",
     price: "",
     stock: "",

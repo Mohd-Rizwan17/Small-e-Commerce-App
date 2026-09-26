@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../api/axios";
+import { FALLBACK_IMAGE } from "../utils/constants";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -54,6 +55,13 @@ const ProductDetails = () => {
 
   return (
     <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="mb-4 aspect-16/9 overflow-hidden rounded-xl bg-gray-100">
+        <img
+          src={product.image || FALLBACK_IMAGE}
+          alt={product.name}
+          className="h-full w-full object-cover"
+        />
+      </div>
       <div className="flex items-start justify-between gap-4">
         <h1 className="text-2xl font-semibold">{product.name}</h1>
         <span className="whitespace-nowrap text-xl font-semibold text-indigo-600">

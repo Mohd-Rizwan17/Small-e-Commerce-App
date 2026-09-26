@@ -10,12 +10,21 @@ const ProductForm = ({
 }) => (
   <form onSubmit={onSubmit} noValidate className="space-y-4">
     <FormField
-      label="Name"
-      name="name"
-      value={form.name}
+      label="Image URL"
+      name="image"
+      value={form.image}
       onChange={onChange}
-      error={fieldErrors.name}
+      error={fieldErrors.image}
     />
+
+    {form.image && (
+      <img
+        src={form.image}
+        alt="Preview"
+        className="h-32 w-full rounded-lg object-cover"
+        onError={(e) => (e.currentTarget.style.display = "none")}
+      />
+    )}
 
     <div>
       <label

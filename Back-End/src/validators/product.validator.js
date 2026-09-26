@@ -12,6 +12,13 @@ export const productBodyValidator = [
     .isLength({ max: 100 })
     .withMessage("Product name cannot exceed 100 characters"),
 
+  body("image")
+    .trim()
+    .notEmpty()
+    .withMessage("Image URL is required")
+    .isURL()
+    .withMessage("Image must be a valid URL"),
+
   body("description")
     .optional()
     .isString()

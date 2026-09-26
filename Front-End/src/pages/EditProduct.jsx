@@ -27,12 +27,13 @@ const EditProduct = () => {
           return;
         }
 
-        setForm({
-          name: product.name,
-          description: product.description || "",
-          price: product.price,
-          stock: product.stock,
-        });
+       setForm({
+         name: product.name,
+         image: product.image || "",
+         description: product.description || "",
+         price: product.price,
+         stock: product.stock,
+       });
       } catch (err) {
         setLoadError(err.response?.data?.message || "Could not load product");
       }
