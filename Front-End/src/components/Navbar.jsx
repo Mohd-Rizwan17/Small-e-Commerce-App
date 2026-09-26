@@ -13,9 +13,9 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-10 border-b border-ink/10 bg-paper/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link to="/" className="text-lg font-semibold text-indigo-600">
+        <Link to="/" className="font-display text-lg font-semibold text-ink">
           Small E-Commerce
         </Link>
 
@@ -24,16 +24,16 @@ const Navbar = () => {
             <>
               <Link
                 to="/products/add"
-                className="font-medium text-gray-700 hover:text-indigo-600"
+                className="font-medium text-ink-muted hover:text-accent"
               >
                 Add Product
               </Link>
-              <span className="hidden text-gray-500 sm:inline">
+              <span className="hidden text-ink-muted sm:inline">
                 Hi, {user.name}
               </span>
               <button
                 onClick={handleLogout}
-                className="rounded-lg border border-gray-300 px-3 py-1.5 font-medium hover:bg-gray-100"
+                className="rounded-lg border border-ink/15 px-3 py-1.5 font-medium hover:bg-ink/5"
               >
                 Logout
               </button>
@@ -42,13 +42,13 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="font-medium text-gray-700 hover:text-indigo-600"
+                className="font-medium text-ink-muted hover:text-accent"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="rounded-lg bg-indigo-600 px-3 py-1.5 font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-accent px-3 py-1.5 font-medium text-white hover:brightness-110"
               >
                 Register
               </Link>
