@@ -37,7 +37,7 @@ Small-e-Commerce-App/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Mohd-Rizwan17/Small-e-Commerce-App.git
 cd Small-e-Commerce-App
 ```
 
