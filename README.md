@@ -114,5 +114,5 @@ The app will be available at `http://localhost:5173`.
 
 ## Live Links
 
-- **Frontend:** _add after deployment_
-- **Backend:** _add after deployment_
+- **Frontend:** https://small-e-commerce-app.vercel.app/
+- **Backend:** https://small-e-commerce-app.onrender.com/api/health
