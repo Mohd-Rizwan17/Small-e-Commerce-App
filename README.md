@@ -78,7 +78,7 @@ Create a `.env` file in `Front-End/` (see `.env.example`):
 
 | Variable       | Description                          |
 | -------------- | ------------------------------------- |
-| `API_SECRET_URL` | Backend API base URL (e.g. `http://localhost:3000/api`) |
+| `VITE_API_URL` | Backend API base URL (e.g. `http://localhost:3000/api`) |
 
 Run the client:
 
